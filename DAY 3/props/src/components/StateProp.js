@@ -1,9 +1,9 @@
 import {useState} from 'react';
 const StateProp=()=>
 {
-    const[name,setName]=useState("AKKinG");
+    const[name,setName]=useState("AK");
     const[num,setNum]=useState(0);
-    const[student,setStudent]=useState({name: "Arun",age:19});
+    const[student,setStudent]=useState({name: "DHARANEESH",age:18});
     const nameHandler=()=>{ 
          setName("Arun");
 };
