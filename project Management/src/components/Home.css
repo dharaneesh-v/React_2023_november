@@ -1,0 +1,14 @@
+.Home
+{
+    text-align: center;
+    background-image: url('https://tse3.mm.bing.net/th?id=OIF.6SdmbK4CkWwzg9MQndhmWw&pid=Api&P=0&h=180');
+    background-repeat: no-repeat;
+    background-size:cover;
+}
+
+.footer
+{
+    border-radius: 2%;
+    background-color: grey ;
+    color: white;
+}

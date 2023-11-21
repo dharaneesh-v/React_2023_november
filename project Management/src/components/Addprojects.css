@@ -1,0 +1,10 @@
+.addproject
+{
+    box-shadow: 0 0 10px grey;
+    border-radius: 5%;
+}
+
+#head:hover
+{
+    color: red;
+}
