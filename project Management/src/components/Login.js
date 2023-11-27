@@ -14,23 +14,53 @@ import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
+import { useNavigate } from 'react-router-dom';
+import axios from "axios"
 
 
 export default function Login() {
-  const [loading, setLoading] = React.useState(false);
-  function handleClick() {
-    setLoading(true);    
-  }
-  const forgotPass=()=>
+  const[popUp,setPopup]=useState(false);
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const navigate=useNavigate();
+  const handleEmail=(event)=>
   {
-    alert("Close Your Eyes and Try To Remember Your Password");
+    setEmail(event.target.value)
+  }
+  const handlePassword=(event)=>
+  {
+    setPassword(event.target.value)
+  }
+  const fetch=async(event)=>{
+    event.preventDefault();
+    
+
+    const response=await axios.get("http://localhost:3001/users");
+    response.data.map((obj)=>{
+      
+      if(obj.email===email)
+      {
+        if(obj.password===password)
+        {
+          
+          console.log("Success");
+          navigate('/home')
+          
+        }
+        else
+        setPopup(true);  
+      }
+      else
+      alert('Invalid Email/Password');
+    })
   }
   
   return (
+    
     <div className='LogBody'>
       <AppBar position='static' color="transparent">
             <Toolbar>
-                    <Link to='/home'><Button color='inherit'>Home</Button></Link>
+                    <Link to='/userhome'><Button color='inherit'>Home</Button></Link>
                     <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}> D-PROJECTS</Typography>
                     <Link to='/register'><Button color="inherit">Register</Button></Link>
                     <Link to='/login'><Button color="inherit">Login</Button></Link>                    
@@ -60,10 +90,10 @@ export default function Login() {
             <form>
             <TextField style={
               {color:'white'}
-            } id="outlined-basic" type='email' label="Email" variant="outlined" required/>
+            } id="outlined-basic" onChange={handleEmail} type='email' label="Email" variant="outlined" required/>
             <br></br>
             <br></br>
-            <TextField id="outlined-basic" type='password' label="Password" variant="outlined" required/>
+            <TextField id="outlined-basic" onChange={handlePassword} type='password' label="Password" variant="outlined" required/>
             <br></br>
             <br></br>
             <label>
@@ -71,7 +101,7 @@ export default function Login() {
             </label><br></br><br></br>
           <Link to="/home"><LoadingButton
             type='submit'
-          onClick={handleClick}
+          onClick={fetch}
           loadingPosition="center"
           variant="contained"
           color="error"
@@ -82,7 +112,7 @@ export default function Login() {
             </form>
             <br></br>
 
-            <h5><a href='' onClick={forgotPass}>Forgot Password</a></h5>
+            <h5><a href='' >Forgot Password</a></h5>
             
             <h5>Don't Have an Account ? <Link to="/register"><a>Create Account</a></Link></h5>
         </div>

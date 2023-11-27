@@ -1,5 +1,6 @@
 import './Home.css';
 import * as React from 'react';
+import Tasks from './Tasks';
 import Projects from './Projects';
 import Addprojects from './Addprojects';
 import AppBar from '@mui/material/AppBar';
@@ -11,7 +12,6 @@ import TabList from '@mui/lab/TabList';
 import TabPanel from '@mui/lab/TabPanel';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
-import MenuIcon from '@mui/icons-material/Menu';
 import Avatar from '@mui/material/Avatar';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
@@ -22,12 +22,12 @@ import PersonAdd from '@mui/icons-material/PersonAdd';
 import Settings from '@mui/icons-material/Settings';
 import Logout from '@mui/icons-material/Logout';
 import { BrowserRouter as Router,Routes, Route, Link } from 'react-router-dom'; 
-import Container from "@mui/material/Container";
-import Grid from "@mui/material/Grid";
-import { Facebook, Instagram, Twitter } from "@mui/icons-material";
+import { Facebook, Instagram, Task, Twitter } from "@mui/icons-material";
+import Dashboard from './Dashboard';
+import Meetings from './Meetings';
 
 
-export default function LabTabs() {
+export default function Home() {
   const [value, setValue] = React.useState('1');
 
   const handleChange = (event, newValue) => {
@@ -48,22 +48,13 @@ export default function LabTabs() {
       <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static" color="transparent">
         <Toolbar>
-          <IconButton
-            size="large"
-            edge="start"
-            color="inherit"
-            aria-label="open drawer"
-            sx={{ mr: 2 }}
-          >
-            <MenuIcon />
-          </IconButton>
           <Typography
             variant="h6"
             noWrap
             component="div"
             sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
           >
-            HOME
+           <b style={{color:'red'}}>D-<b style={{color:"black"}}>Projects </b></b>
           </Typography>
           <React.Fragment>
                         <Box sx={{ display: 'flex', alignItems: 'center', textAlign: 'center' }}>
@@ -76,7 +67,7 @@ export default function LabTabs() {
                               aria-haspopup="true"
                               aria-expanded={open ? 'true' : undefined}
                             >
-                              <Avatar sx={{ width: 32, height: 32 }}>M</Avatar>
+                                              <Avatar variant="plain" />
                             </IconButton>
                           </Tooltip>
                         </Box>
@@ -118,16 +109,7 @@ export default function LabTabs() {
                           <MenuItem onClick={handleClose}>
                             <Avatar /> Profile
                           </MenuItem>
-                          <MenuItem onClick={handleClose}>
-                            <Avatar /> My account
-                          </MenuItem>
                           <Divider />
-                          <MenuItem onClick={handleClose}>
-                            <ListItemIcon>
-                              <PersonAdd fontSize="small" />
-                            </ListItemIcon>
-                            Add another account
-                          </MenuItem>
                           <MenuItem onClick={handleClose}>
                             <ListItemIcon>
                               <Settings fontSize="small" />
@@ -150,16 +132,16 @@ export default function LabTabs() {
       <TabContext value={value}>
         <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
           <TabList onChange={handleChange} aria-label="lab API tabs example">
-            <Tab label="Projects" value="1" />
-            <Tab label="Add Project" value="2" />
-            <Tab label="Task Board" value="3" />
+            <Tab label="Dashboard" value="1" />
+            <Tab label="Projects" value="2" />
+            <Tab label="Tasks" value="3" />
             <Tab label="Meetings" value="4" />
           </TabList>
         </Box>
-        <TabPanel value="1"><Projects/></TabPanel>
-        <TabPanel value="2"><Addprojects/></TabPanel>
-        <TabPanel value="3"><p>Get Overview of Your Current Work</p></TabPanel>
-        <TabPanel value="4"></TabPanel>
+        <TabPanel value="1"><Dashboard/></TabPanel>
+        <TabPanel value="2"><Projects/></TabPanel>
+        <TabPanel value="3"><Tasks/></TabPanel>
+        <TabPanel value="4"><Meetings/></TabPanel>
       </TabContext>
     </Box>
 
