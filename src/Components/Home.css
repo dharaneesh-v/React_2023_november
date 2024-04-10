@@ -1,0 +1,33 @@
+
+.one{   
+    background-image: url('https://tse2.mm.bing.net/th?id=OIP.AIxFg7_V7HJ0L1rV7-h_QQHaEK&pid=Api&P=0&h=180');
+    background-repeat: no-repeat;
+    background-size:cover;
+    text-align: left;
+}
+.two_2
+{
+    color: black;
+    border-radius: 5%;
+    box-shadow: 0 0 10px gray;
+    height: 500px;
+    backdrop-filter: blur(100px);
+}
+.four_1
+{
+    background-color: black;
+    text-align: center;
+    color: white;
+    border-radius: 5%;
+    height: 200px;
+    width: 250px;
+    box-shadow: 0 0 10px gray;
+}
+
+.four_2
+{
+    float: left;
+    width: 70px;
+    border-radius: 100%;
+    background-color: yellow;
+}
